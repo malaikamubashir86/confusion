@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
+
 import { Card, CardImg, CardImgOverlay, CardText, CardBody,
     CardTitle } from 'reactstrap';
+import DishdetailComponent from './DishdetailComponent';
 
 class Menu extends Component {
 
@@ -38,10 +39,10 @@ class Menu extends Component {
       if (dish != null)
           return(
             
-              <div> <h1>Comments</h1>
+              <div> <h4>Comments</h4>
             {dish.comments.map((x) => {
               return (
-               <li style={{listStyle: "none",fontSize:"1.35rem",margin:"1.25rem",marginLeft:"0rem"}}>{ x.comment }<br></br>--{ x.author}</li>
+                <ul className='list-unstyled'><li style={{fontSize:"1.35rem"}}>{ x.comment }<br></br>--{ x.author}</li></ul>
               );
             })}</div>
              
@@ -57,7 +58,7 @@ class Menu extends Component {
 
     render() {
         const menu = this.props.dishes.map((dish) => {
-            return (
+            return ( 
               <div  className="col-12 col-md-5 m-1">
                 <Card key={dish.id}
                   onClick={() => this.onDishSelect(dish)}>
@@ -71,20 +72,7 @@ class Menu extends Component {
         });
 
         return (
-            <div className="container">
-                <div className="row">
-                    {menu}
-                </div>
-                <div className="row">
-                  <div  className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.state.selectedDish)}
-                  </div>
-                  {/* for comments */}
-                  <div  className="col-12 col-md-5 m-1">
-                  {this.renderComment(this.state.selectedDish)}
-                  </div>
-                </div>
-            </div>
+           <DishdetailComponent menu={menu} renderDish={this.renderDish(this.state.selectedDish)} renComment={this.renderComment(this.state.selectedDish)}></DishdetailComponent>
         );
     }
 }
