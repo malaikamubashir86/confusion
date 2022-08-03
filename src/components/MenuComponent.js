@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
+import Home from './HomeComponent';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody,
     CardTitle } from 'reactstrap';
 import DishdetailComponent from './DishdetailComponent';
-
+import { Switch, Route, Redirect } from 'react-router-dom';
 class Menu extends Component {
 
     constructor(props) {
@@ -57,6 +57,13 @@ class Menu extends Component {
   }
 
     render() {
+        const HomePage = () => {
+          return(
+              <Home 
+              />
+          );
+        }
+      
         const menu = this.props.dishes.map((dish) => {
             return ( 
               <div  className="col-12 col-md-5 m-1">
@@ -70,10 +77,18 @@ class Menu extends Component {
               </div>
             );
         });
-
         return (
-           <DishdetailComponent menu={menu} renderDish={this.renderDish(this.state.selectedDish)} renComment={this.renderComment(this.state.selectedDish)}></DishdetailComponent>
-        );
+          
+          <Switch>
+              <Route path='/home' component={HomePage} />
+              <Route exact path='/menu' component={() => <DishdetailComponent menu={menu} renderDish={this.renderDish(this.state.selectedDish)} renComment={this.renderComment(this.state.selectedDish)}></DishdetailComponent>} />
+              <Redirect to="/home" />
+                      
+          </Switch>
+      
+              );
+          
+
     }
 }
 
