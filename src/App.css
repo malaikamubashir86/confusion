@@ -15,7 +15,8 @@
 }
 .nav-link{
     color: white;
-    padding: 2px;
+    padding: 20px;
+    list-style: none;
 }
 
 .footer{

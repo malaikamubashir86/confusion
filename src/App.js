@@ -1,26 +1,27 @@
 import React,{Component} from 'react';
-import Menu from './components/MenuComponent';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { DISHES } from './shared/dishes';
-import Header from './components/HeaderComponent';
-import Footer from './components/FooterComponent';
+import Main from './components/MainComponent';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dishes: DISHES
+      dishes: DISHES,
     };
   }
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        {/* <div className="App">
           <Header></Header>
           <Menu dishes={this.state.dishes} />
           <Footer></Footer>
           
-        </div>
+        </div> */}
+      <div className="App">
+        <Main />
+      </div>
       </BrowserRouter>
     );
   }

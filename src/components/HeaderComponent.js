@@ -2,7 +2,6 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron }
 import { NavLink } from 'react-router-dom';
 import React, { Component } from 'react'
 
-
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +14,7 @@ class Header extends Component {
 
       toggleNav() {
         this.setState({
-          isNavOpen: !this.state.isNavOpen
+          isNavOpen: !(this.state.isNavOpen)
         });
       }
 
